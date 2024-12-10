@@ -1,6 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { removeFromFavsAction } from '../redux/actions'
 
 const Favourites = () => {
   const favArray = useSelector((reduxState) => {
@@ -37,12 +38,7 @@ const Favourites = () => {
                   // da questo onClick scaturiremo un cambio di stato!
                   // per farlo dobbiamo fare il "dispatch" di una "action"
                   // in modo da "risvegliare" il reducer!
-                  dispatch({
-                    // dobbiamo come minimo specificare il "tipo" dell'azione
-                    // con una proprietà "type"
-                    type: 'REMOVE_FROM_FAVS',
-                    payload: i,
-                  })
+                  dispatch(removeFromFavsAction(i))
                 }}
               >
                 Remove from Favourites

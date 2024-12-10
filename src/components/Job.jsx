@@ -1,6 +1,7 @@
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { addToFavsAction } from '../redux/actions'
 
 const Job = ({ data }) => {
   const dispatch = useDispatch()
@@ -25,12 +26,7 @@ const Job = ({ data }) => {
           // da questo onClick scaturiremo un cambio di stato!
           // per farlo dobbiamo fare il "dispatch" di una "action"
           // in modo da "risvegliare" il reducer!
-          dispatch({
-            // dobbiamo come minimo specificare il "tipo" dell'azione
-            // con una proprietà "type"
-            type: 'ADD_TO_FAVS',
-            payload: data,
-          })
+          dispatch(addToFavsAction(data))
         }}
       >
         Add to Favourites
